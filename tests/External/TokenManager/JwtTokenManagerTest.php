@@ -17,4 +17,23 @@ class JwtTokenManagerTest extends TestCase
 
         $this->assertEquals(true, $tokenManager->verify($token));
     }
+
+    public function testReturnFalseWhenTokenIsInvalid(): void
+    {
+        $tokenManager = new JwtTokenManager("secret");
+        $token = $tokenManager->sign(new TokenData(id: 1));
+
+        $this->assertEquals(false, $tokenManager->verify($token . 'invalid'));
+    }
+
+    public function testReturnFalseWhenTokenIsExpired(): void
+    {
+        $tokenManager = new JwtTokenManager("secret");
+        $token = $tokenManager->sign(
+            tokenData: new TokenData(id: 1),
+            expirationDate: (new \DateTimeImmutable())->sub(new \DateInterval('P1D'))
+        );
+
+        $this->assertEquals(false, $tokenManager->verify($token));
+    }
 }
