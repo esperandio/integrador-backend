@@ -20,6 +20,8 @@
  - Encoder (PHP native password hash)
  - Repositories (PDO)
  - Token manager (JWT)
+- Presenter
+ - Controllers
 ## Run Composer
 
 ```
