@@ -3,7 +3,7 @@ version: "3.7"
 services:
   app:
     image: php
-    container_name: integrador-backend
+    container_name: integrador_backend
     command: php -S 0.0.0.0:8000
     ports:
       - 8000:8000
