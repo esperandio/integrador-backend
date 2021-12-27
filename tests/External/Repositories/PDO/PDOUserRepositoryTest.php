@@ -9,7 +9,7 @@ use Test\Builders\{PDOHelperBuilder, UserDataBuilder};
 use App\External\Repositories\PDO\PDOUserRepository;
 use App\UseCases\Ports\UserData;
 
-class UserRepositoryTest extends TestCase
+class PDOUserRepositoryTest extends TestCase
 {
     public function testAdd(): void
     {

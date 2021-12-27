@@ -16,7 +16,7 @@ use App\UseCases\CreateGroup\Exceptions\{
     GroupNotFoundException
 };
 
-final class CreateGroupTest extends TestCase
+final class DefaultCaseTest extends TestCase
 {
     public function testCanBeCreatedFromValidData(): void
     {
