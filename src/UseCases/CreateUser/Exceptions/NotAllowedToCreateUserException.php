@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\UseCases\CreateUser\Exceptions;
 
-use Exception;
+use App\UseCases\Exceptions\NotAllowedException;
 
-class NotAllowedToCreateUserException extends Exception
+class NotAllowedToCreateUserException extends NotAllowedException
 {
     public function __construct()
     {

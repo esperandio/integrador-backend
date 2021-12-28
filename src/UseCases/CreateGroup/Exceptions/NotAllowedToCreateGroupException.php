@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\UseCases\CreateGroup\Exceptions;
 
-use Exception;
+use App\UseCases\Exceptions\NotAllowedException;
 
-class NotAllowedToCreateGroupException extends Exception
+class NotAllowedToCreateGroupException extends NotAllowedException
 {
     public function __construct()
     {
