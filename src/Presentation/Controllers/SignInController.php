@@ -22,8 +22,8 @@ class SignInController extends ControllerTemplate
         $requestParams = $requestInput->body;
 
         $authenticationResultData = $this->signIn->perform(new AuthenticationParamsData(
-            email: $requestParams['email'],
-            password: $requestParams['password']
+            email: (string) $requestParams['email'],
+            password: (string) $requestParams['password']
         ));
 
         return new RequestOutput(body: (array) $authenticationResultData);
