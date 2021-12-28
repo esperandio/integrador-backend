@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\External\Controllers;
 
-use App\Presentation\Controllers\Ports\{ControllerTemplate, RequestInput};
+use App\Presentation\Controllers\Ports\{ControllerTemplate, RequestInput, CreateResourceOperation};
 use App\External\Controllers\Ports\HttpRequestOutput;
 
 class WebController
@@ -25,6 +25,10 @@ class WebController
 
             if ($body == false) {
                 $body = "";
+            }
+
+            if ($this->controllerTemplate instanceof CreateResourceOperation) {
+                return $this->created($body);
             }
 
             return $this->ok($body);

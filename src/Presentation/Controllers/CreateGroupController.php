@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Presentation\Controllers;
 
-use App\Presentation\Controllers\Ports\{ControllerTemplate, RequestInput, RequestOutput};
+use App\Presentation\Controllers\Ports\{CreateResourceOperation, ControllerTemplate, RequestInput, RequestOutput};
 use App\UseCases\Ports\{CreateGroupUseCase, GroupData};
 
-class CreateGroupController extends ControllerTemplate
+class CreateGroupController extends ControllerTemplate implements CreateResourceOperation
 {
     protected array $requiredParams = ['userId', 'name', 'minimumMillisecondsIdleTimeAllowed', 'roleKey'];
 

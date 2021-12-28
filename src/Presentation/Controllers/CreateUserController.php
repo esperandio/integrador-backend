@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Presentation\Controllers;
 
-use App\Presentation\Controllers\Ports\{ControllerTemplate, RequestInput, RequestOutput};
+use App\Presentation\Controllers\Ports\{CreateResourceOperation, ControllerTemplate, RequestInput, RequestOutput};
 use App\UseCases\Ports\{CreateUserUseCase, UserData};
 
-class CreateUserController extends ControllerTemplate
+class CreateUserController extends ControllerTemplate implements CreateResourceOperation
 {
     protected array $requiredParams = ['userId', 'email', 'password', 'groupId'];
 
