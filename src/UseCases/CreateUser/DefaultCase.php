@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\UseCases\CreateUser;
 
-use App\UseCases\Ports\{UserRepository, GroupRepository, Encoder, UserData};
+use App\UseCases\Ports\{CreateUserUseCase, UserRepository, GroupRepository, Encoder, UserData};
 use App\Entities\{Group, User};
 use App\Entities\Factories\Role as RoleFactory;
 use App\UseCases\CreateUser\Exceptions\{
@@ -14,7 +14,7 @@ use App\UseCases\CreateUser\Exceptions\{
     GroupNotFoundException
 };
 
-class DefaultCase
+class DefaultCase implements CreateUserUseCase
 {
     public function __construct(
         private UserRepository $userRepository,
