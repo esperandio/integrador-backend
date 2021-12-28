@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\UseCases\SignIn;
 
-use App\UseCases\Ports\{UserRepository, Encoder};
+use App\UseCases\Ports\{SignInUseCase, UserRepository, Encoder};
 use App\UseCases\SignIn\Ports\{AuthenticationParamsData, AuthenticationResultData, TokenData, TokenManager};
 use App\UseCases\SignIn\Exceptions\{UserNotFoundException, WrongPasswordExpection};
 
-class DefaultCase
+class DefaultCase implements SignInUseCase
 {
     public function __construct(
         private UserRepository $userRepository,
