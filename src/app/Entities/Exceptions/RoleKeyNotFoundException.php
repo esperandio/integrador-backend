@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities\Exceptions;
 
-use Exception;
-
-class RoleKeyNotFoundException extends Exception
+class RoleKeyNotFoundException extends DomainException
 {
     public function __construct(string $roleKey)
     {

@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities\Exceptions;
 
-use Exception;
-
-class InvalidPasswordException extends Exception
+class InvalidPasswordException extends DomainException
 {
     public function __construct(string $pattern)
     {
