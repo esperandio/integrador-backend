@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\UseCases\Exceptions;
 
-use Exception;
+use App\Exceptions\DomainException;
 
-class NotAllowedException extends Exception
+class NotAllowedException extends DomainException
 {
     public function __construct(string $error)
     {

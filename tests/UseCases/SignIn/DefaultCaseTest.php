@@ -12,7 +12,7 @@ use Test\Builders\UserDataBuilder;
 use App\UseCases\SignIn\DefaultCase as SignIn;
 use App\UseCases\Ports\{UserRepository};
 use App\UseCases\SignIn\Ports\{AuthenticationParamsData, TokenData};
-use App\UseCases\SignIn\Exceptions\{UserNotFoundException, WrongPasswordExpection};
+use App\UseCases\SignIn\Exceptions\{UserNotFoundException, WrongPasswordException};
 
 class DefaultCaseTest extends TestCase
 {
@@ -47,7 +47,7 @@ class DefaultCaseTest extends TestCase
 
     public function testThrowsExceptionWhenPasswordIsWrong(): void
     {
-        $this->expectException(WrongPasswordExpection::class);
+        $this->expectException(WrongPasswordException::class);
 
         $userRepository = $this->getUserRepositoryWithDefaultUser();
         $tokenManager = new FakeTokenManager();

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Entities\Exceptions;
+namespace App\Exceptions;
 
 use Exception;
 

@@ -6,7 +6,7 @@ namespace App\UseCases\SignIn;
 
 use App\UseCases\Ports\{SignInUseCase, UserRepository, Encoder};
 use App\UseCases\SignIn\Ports\{AuthenticationParamsData, AuthenticationResultData, TokenData, TokenManager};
-use App\UseCases\SignIn\Exceptions\{UserNotFoundException, WrongPasswordExpection};
+use App\UseCases\SignIn\Exceptions\{UserNotFoundException, WrongPasswordException};
 
 class DefaultCase implements SignInUseCase
 {
@@ -28,7 +28,7 @@ class DefaultCase implements SignInUseCase
         $passwordMatches = $this->encoder->verify($authenticationParamsData->password, $userData->password);
 
         if (!$passwordMatches) {
-            throw new WrongPasswordExpection();
+            throw new WrongPasswordException();
         }
 
         $accessToken = $this->tokenManager->sign(new TokenData(id: $userData->id));

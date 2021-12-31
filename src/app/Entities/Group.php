@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use App\Entities\Exceptions\DomainException;
+use App\Exceptions\DomainException;
 
 class Group
 {

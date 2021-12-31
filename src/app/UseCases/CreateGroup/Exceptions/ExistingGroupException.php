@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\UseCases\CreateGroup\Exceptions;
 
-use Exception;
+use App\Exceptions\DomainException;
 
-class ExistingGroupException extends Exception
+class ExistingGroupException extends DomainException
 {
     public function __construct()
     {

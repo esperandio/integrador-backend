@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Presentation\Controllers\Exceptions;
 
-use Exception;
+use App\Exceptions\DomainException;
 
-class MissingParamException extends Exception
+class MissingParamException extends DomainException
 {
     /**
      * @param array<string> $missingParams

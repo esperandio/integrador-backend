@@ -7,7 +7,7 @@ namespace Test\Entities;
 use PHPUnit\Framework\TestCase;
 use App\Entities\Group;
 use App\Entities\AdminRole;
-use App\Entities\Exceptions\DomainException;
+use App\Exceptions\DomainException;
 
 final class GroupTest extends TestCase
 {

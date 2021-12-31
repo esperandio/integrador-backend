@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\UseCases\SignIn\Exceptions;
 
-use Exception;
+use App\Exceptions\DomainException;
 
-class WrongPasswordExpection extends Exception
+class WrongPasswordException extends DomainException
 {
     public function __construct()
     {

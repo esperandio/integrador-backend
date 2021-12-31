@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\UseCases\SignIn\Exceptions;
 
-use Exception;
+use App\Exceptions\DomainException;
 
-class UserNotFoundException extends Exception
+class UserNotFoundException extends DomainException
 {
     public function __construct()
     {

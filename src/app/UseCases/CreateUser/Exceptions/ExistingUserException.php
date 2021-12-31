@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\UseCases\CreateUser\Exceptions;
 
-use Exception;
+use App\Exceptions\DomainException;
 
-class ExistingUserException extends Exception
+class ExistingUserException extends DomainException
 {
     public function __construct()
     {
