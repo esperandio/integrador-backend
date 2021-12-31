@@ -36,7 +36,7 @@ class WebController
             return $this->forbidden($e->getMessage());
         } catch (\App\Exceptions\DomainException $e) {
             return $this->badRequest($e->getMessage());
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return $this->serverError($e->getMessage());
         }
     }
