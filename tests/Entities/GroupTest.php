@@ -7,7 +7,7 @@ namespace Test\Entities;
 use PHPUnit\Framework\TestCase;
 use App\Entities\Group;
 use App\Entities\AdminRole;
-use Exception;
+use App\Entities\Exceptions\DomainException;
 
 final class GroupTest extends TestCase
 {
@@ -28,7 +28,7 @@ final class GroupTest extends TestCase
 
     public function testThrowsExceptionWhenNameIsInvalid(): void
     {
-        $this->expectException(Exception::class);
+        $this->expectException(DomainException::class);
 
         $invalidName = '';
         $validMinimumMillisecondsIdleTimeAllowed = 1000;
@@ -42,7 +42,7 @@ final class GroupTest extends TestCase
 
     public function testThrowsExceptionWhenMinimumIdleTimeIsInvalid(): void
     {
-        $this->expectException(Exception::class);
+        $this->expectException(DomainException::class);
 
         $validName = 'Group Example';
         $invalidMinimumMillisecondsIdleTimeAllowed = -1;

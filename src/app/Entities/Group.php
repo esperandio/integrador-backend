@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Exception;
+use App\Entities\Exceptions\DomainException;
 
 class Group
 {
@@ -18,11 +18,11 @@ class Group
     public static function create(string $name, int $minimumMillisecondsIdleTimeAllowed, Role $role): Group
     {
         if (empty($name)) {
-            throw new Exception('Group\'s name MUST NOT BE empty!');
+            throw new DomainException('Group\'s name MUST NOT BE empty!');
         }
 
         if ($minimumMillisecondsIdleTimeAllowed <= 0) {
-            throw new Exception('Group\'s minimum idle time MUST BE greater than 0 milliseconds!');
+            throw new DomainException('Group\'s minimum idle time MUST BE greater than 0 milliseconds!');
         }
 
         return new Group(
