@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Slim\Factory\AppFactory;
+Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
 
-$app = AppFactory::create();
+$app = Slim\Factory\AppFactory::create();
 
 $setupMiddleware = require __DIR__ . '/middleware.php';
 $setupMiddleware($app);

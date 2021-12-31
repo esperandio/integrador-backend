@@ -6,9 +6,6 @@ require __DIR__ . '/src/main/adapters/autoload.php';
 
 use Slim\App;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
 /**
  * @var App $app
  */
