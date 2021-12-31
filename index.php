@@ -1,6 +1,8 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/src/main/factories/autoload.php';
+require __DIR__ . '/src/main/adapters/autoload.php';
 
 use Slim\App;
 
