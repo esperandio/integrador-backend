@@ -2,7 +2,10 @@ version: "3.7"
 
 services:
   app:
-    image: php
+    image: integrador_backend/php:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
     container_name: integrador_backend
     command: php -S 0.0.0.0:8000
     ports:
@@ -12,3 +15,17 @@ services:
       - ./:/app
     environment:
       - TZ=America/Sao_Paulo
+  db:
+    image: mysql
+    container_name: integrador_backend_db
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - MYSQL_DATABASE=integrador
+      - TZ=America/Sao_Paulo
+networks:
+  default:
+    external:
+      name: integrador_backend_network
