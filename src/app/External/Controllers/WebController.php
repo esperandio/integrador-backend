@@ -6,7 +6,6 @@ namespace App\External\Controllers;
 
 use App\Presentation\Controllers\Ports\{ControllerTemplate, RequestInput, CreateResourceOperation};
 use App\External\Controllers\Ports\HttpRequestOutput;
-use App\UseCases\Exceptions\NotAllowedException;
 
 class WebController
 {
@@ -33,10 +32,12 @@ class WebController
             }
 
             return $this->ok($body);
-        } catch (NotAllowedException $e) {
+        } catch (\App\UseCases\Exceptions\NotAllowedException $e) {
             return $this->forbidden($e->getMessage());
-        } catch (\Exception $e) {
+        } catch (\App\Exceptions\DomainException $e) {
             return $this->badRequest($e->getMessage());
+        } catch (\Exception $e) {
+            return $this->serverError($e->getMessage());
         }
     }
 }
