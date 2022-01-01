@@ -18,7 +18,7 @@ class PDOHelper
 
     /**
      * @param array<string, mixed> $bindParams
-     * @return null|array<string, mixed>
+     * @return null|array<string, string|int>
      */
     public function fetch(string $sql, array $bindParams = []): ?array
     {
@@ -44,7 +44,12 @@ class PDOHelper
             return null;
         }
 
-        return (array) $result;
+        /**
+         * @var array<string, string|int> $result
+         */
+        $result = (array) $result;
+
+        return $result;
     }
 
     /**
@@ -60,6 +65,13 @@ class PDOHelper
         if (empty($result)) {
             return null;
         }
+
+        array_walk(
+            $result,
+            function (&$value) {
+                $value = (string) $value;
+            }
+        );
 
         /**
          * @var PDOResultData $resultDataInstance
@@ -124,7 +136,7 @@ class PDOHelper
 
     public function tableRowsCount(string $tableName): int
     {
-        $result = $this->pdoConnection->query('SELECT COUNT(*) as total FROM ' . $tableName);
+        $result = $this->pdoConnection->query('SELECT COUNT(*) as total FROM `' . $tableName . '`');
 
         if ($result == false) {
             throw new Exception("Database server cannot successfully execute the statement!");

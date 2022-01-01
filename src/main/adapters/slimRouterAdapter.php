@@ -19,14 +19,10 @@ function slimRouterAdapter(WebController $controller): \Closure
             body: $body
         ));
 
-        $result = json_encode($httpResponse->body);
+        $response->getBody()->write($httpResponse->body);
 
-        if ($result == false) {
-            $result = '';
-        }
-
-        $response->getBody()->write($result);
-
-        return $response->withStatus($httpResponse->statusCode);
+        return $response
+            ->withStatus($httpResponse->statusCode)
+            ->withHeader('Content-type', 'application/json');
     };
 }

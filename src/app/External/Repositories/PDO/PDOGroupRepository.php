@@ -17,7 +17,7 @@ class PDOGroupRepository implements GroupRepository
     public function add(GroupData $groupData): GroupData
     {
         $this->helper->command(
-            'INSERT INTO groups (nm_group, nr_milliseconds_idle_time, ds_role_key) '
+            'INSERT INTO `groups` (nm_group, nr_milliseconds_idle_time, ds_role_key) '
             . 'VALUES (:nm_group, :nr_milliseconds_idle_time, :ds_role_key)',
             [
                 'nm_group' => $groupData->name,
@@ -39,7 +39,7 @@ class PDOGroupRepository implements GroupRepository
     {
         $result = $this->helper->fetchResultDataInstance(
             PDOGroupData::class,
-            'SELECT * FROM groups WHERE nm_group = :nm_group',
+            'SELECT * FROM `groups` WHERE nm_group = :nm_group',
             [
                 'nm_group' => $name
             ]
@@ -59,7 +59,7 @@ class PDOGroupRepository implements GroupRepository
     {
         $result = $this->helper->fetchResultDataInstance(
             PDOGroupData::class,
-            'SELECT * FROM groups WHERE id = :id',
+            'SELECT * FROM `groups` WHERE id = :id',
             [
                 'id' => $id
             ]
