@@ -6,6 +6,8 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    depends_on:
+      - db
     container_name: integrador_backend
     command: php -S 0.0.0.0:8000
     ports:
