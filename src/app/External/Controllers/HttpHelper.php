@@ -20,16 +20,25 @@ trait HttpHelper
 
     private function forbidden(string $error = ""): HttpRequestOutput
     {
-        return new HttpRequestOutput(body: $error, statusCode: 403);
+        return $this->getErrorHttpRequestOutput($error, 403);
     }
 
     private function badRequest(string $error = ""): HttpRequestOutput
     {
-        return new HttpRequestOutput(body: $error, statusCode: 400);
+        return $this->getErrorHttpRequestOutput($error, 400);
     }
 
     private function serverError(string $error = ""): HttpRequestOutput
     {
-        return new HttpRequestOutput(body: $error, statusCode: 500);
+        return $this->getErrorHttpRequestOutput($error, 500);
+    }
+
+    private function getErrorHttpRequestOutput(string $error, int $statusCode): HttpRequestOutput {
+        return new HttpRequestOutput(
+            body: json_encode([
+                'error' => $error
+            ]), 
+            statusCode: $statusCode
+        );
     }
 }
