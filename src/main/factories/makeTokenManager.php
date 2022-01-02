@@ -7,5 +7,5 @@ use App\External\TokenManager\JwtTokenManager;
 
 function makeTokenManager(): TokenManager
 {
-    return new JwtTokenManager('');
+    return new JwtTokenManager($_ENV['JWT_SECRET']);
 }
