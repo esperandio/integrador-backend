@@ -34,6 +34,8 @@ class WebController
             return $this->ok($body);
         } catch (\App\UseCases\Exceptions\NotAllowedException $e) {
             return $this->forbidden($e->getMessage());
+        } catch (\App\Presentation\Middleware\Exceptions\UnauthorizedException $e) {
+            return $this->unauthorized($e->getMessage());
         } catch (\App\Exceptions\DomainException $e) {
             return $this->badRequest($e->getMessage());
         } catch (\Throwable $e) {
