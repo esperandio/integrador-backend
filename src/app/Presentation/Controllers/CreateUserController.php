@@ -23,7 +23,7 @@ class CreateUserController extends ControllerTemplate implements CreateResourceO
         $userData = $this->createUser->perform(
             createdByUserId: (int) $requestParams['userId'],
             userData: new UserData(
-                email: (string) $requestParams['userId'],
+                email: (string) $requestParams['email'],
                 password: (string) $requestParams['password'],
                 groupId: (int) $requestParams['groupId']
             )
