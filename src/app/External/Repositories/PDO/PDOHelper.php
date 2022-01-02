@@ -53,13 +53,16 @@ class PDOHelper
     }
 
     /**
+     * @template T
+     * @param class-string<T> $pdoResultDataClass
      * @param array<string, mixed> $bindParams
+     * @return T|null
      */
     public function fetchResultDataInstance(
         string $pdoResultDataClass,
         string $sql,
         array $bindParams = []
-    ): ?PDOResultData {
+    ) {
         $result = $this->fetch($sql, $bindParams);
 
         if (empty($result)) {
@@ -73,12 +76,7 @@ class PDOHelper
             }
         );
 
-        /**
-         * @var PDOResultData $resultDataInstance
-         */
-        $resultDataInstance = new $pdoResultDataClass(... $result);
-
-        return $resultDataInstance;
+        return new $pdoResultDataClass(... $result);
     }
 
     /**
