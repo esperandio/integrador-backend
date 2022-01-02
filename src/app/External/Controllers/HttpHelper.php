@@ -33,11 +33,18 @@ trait HttpHelper
         return $this->getErrorHttpRequestOutput($error, 500);
     }
 
-    private function getErrorHttpRequestOutput(string $error, int $statusCode): HttpRequestOutput {
+    private function getErrorHttpRequestOutput(string $error, int $statusCode): HttpRequestOutput
+    {
+        $json = json_encode([
+            'error' => $error
+        ]);
+
+        if ($json == false) {
+            $json = "";
+        }
+
         return new HttpRequestOutput(
-            body: json_encode([
-                'error' => $error
-            ]), 
+            body: $json,
             statusCode: $statusCode
         );
     }
