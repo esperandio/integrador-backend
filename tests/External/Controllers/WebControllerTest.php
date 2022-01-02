@@ -10,7 +10,8 @@ use Test\Doubles\Controllers\{
     FakeCreateResourceController,
     ExceptionController,
     DomainExceptionController,
-    NotAllowedExceptionController
+    NotAllowedExceptionController,
+    UnauthorizedExceptionController
 };
 use App\External\Controllers\WebController;
 use App\Presentation\Controllers\Ports\RequestInput;
@@ -39,6 +40,14 @@ class WebControllerTest extends TestCase
         $response = $controller->handle(new RequestInput());
 
         $this->assertEquals(400, $response->statusCode);
+    }
+
+    public function testReturn401WhenControllerOperationFailedWithAUnauthorizedException(): void
+    {
+        $controller = new WebController(new UnauthorizedExceptionController());
+        $response = $controller->handle(new RequestInput());
+
+        $this->assertEquals(401, $response->statusCode);
     }
 
     public function testReturn403WhenOperationFailedWithANotAllowedException(): void
