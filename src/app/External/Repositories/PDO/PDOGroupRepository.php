@@ -37,7 +37,7 @@ class PDOGroupRepository implements GroupRepository
 
     public function findGroupByName(string $name): ?GroupData
     {
-        $result = $this->helper->fetchResultDataInstance(
+        $pdoGroupData = $this->helper->fetchResultDataInstance(
             PDOGroupData::class,
             'SELECT * FROM `groups` WHERE nm_group = :nm_group',
             [
@@ -45,19 +45,19 @@ class PDOGroupRepository implements GroupRepository
             ]
         );
 
-        if (empty($result)) {
+        if (empty($pdoGroupData)) {
             return null;
         }
 
         /**
-         * @var PDOGroupData $result
+         * @var PDOGroupData $pdoGroupData
          */
-        return $this->convertToGroupData($result);
+        return $this->convertToGroupData($pdoGroupData);
     }
 
     public function findGroupById(int $id): ?GroupData
     {
-        $result = $this->helper->fetchResultDataInstance(
+        $pdoGroupData = $this->helper->fetchResultDataInstance(
             PDOGroupData::class,
             'SELECT * FROM `groups` WHERE id = :id',
             [
@@ -65,14 +65,14 @@ class PDOGroupRepository implements GroupRepository
             ]
         );
 
-        if (empty($result)) {
+        if (empty($pdoGroupData)) {
             return null;
         }
 
         /**
-         * @var PDOGroupData $result
+         * @var PDOGroupData $pdoGroupData
          */
-        return $this->convertToGroupData($result);
+        return $this->convertToGroupData($pdoGroupData);
     }
 
     public function count(): int

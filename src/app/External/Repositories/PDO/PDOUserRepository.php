@@ -36,7 +36,7 @@ class PDOUserRepository implements UserRepository
 
     public function findUserByEmail(string $email): ?UserData
     {
-        $result = $this->helper->fetchResultDataInstance(
+        $pdoUserData = $this->helper->fetchResultDataInstance(
             PDOUserData::class,
             'SELECT * FROM users WHERE ds_email = :ds_email',
             [
@@ -44,19 +44,19 @@ class PDOUserRepository implements UserRepository
             ]
         );
 
-        if (empty($result)) {
+        if (empty($pdoUserData)) {
             return null;
         }
 
         /**
-         * @var PDOUserData $result
+         * @var PDOUserData $pdoUserData
          */
-        return $this->convertToUserData($result);
+        return $this->convertToUserData($pdoUserData);
     }
 
     public function findUserById(int $id): ?UserData
     {
-        $result = $this->helper->fetchResultDataInstance(
+        $pdoUserData = $this->helper->fetchResultDataInstance(
             PDOUserData::class,
             'SELECT * FROM users WHERE id = :id',
             [
@@ -64,14 +64,14 @@ class PDOUserRepository implements UserRepository
             ]
         );
 
-        if (empty($result)) {
+        if (empty($pdoUserData)) {
             return null;
         }
 
         /**
-         * @var PDOUserData $result
+         * @var PDOUserData $pdoUserData
          */
-        return $this->convertToUserData($result);
+        return $this->convertToUserData($pdoUserData);
     }
 
     public function count(): int
