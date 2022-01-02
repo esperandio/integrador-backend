@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Presentation\Controllers;
 
-use App\Presentation\Controllers\Ports\{CreateResourceOperation, ControllerTemplate, RequestInput, RequestOutput};
+use App\Presentation\Ports\{RequestInput, RequestOutput};
+use App\Presentation\Controllers\Ports\{CreateResourceOperation, ControllerTemplate};
 use App\UseCases\Ports\{CreateGroupUseCase, GroupData};
 
 class CreateGroupController extends ControllerTemplate implements CreateResourceOperation

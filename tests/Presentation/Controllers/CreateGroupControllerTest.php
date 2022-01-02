@@ -7,7 +7,7 @@ namespace Test\Presentation\Controllers;
 use PHPUnit\Framework\TestCase;
 use Test\Doubles\UseCases\{FakeCreateGroup, ExceptionCreateGroup};
 use App\Presentation\Controllers\CreateGroupController;
-use App\Presentation\Controllers\Ports\{RequestInput, RequestOutput};
+use App\Presentation\Ports\{RequestInput, RequestOutput};
 use App\Presentation\Controllers\Exceptions\MissingParamException;
 use Exception;
 

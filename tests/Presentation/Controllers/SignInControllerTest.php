@@ -7,7 +7,7 @@ namespace Test\Presentation\Controllers;
 use PHPUnit\Framework\TestCase;
 use Test\Doubles\UseCases\{FakeSignIn, ExceptionSignIn};
 use App\Presentation\Controllers\SignInController;
-use App\Presentation\Controllers\Ports\{RequestInput, RequestOutput};
+use App\Presentation\Ports\{RequestInput, RequestOutput};
 use App\Presentation\Controllers\Exceptions\MissingParamException;
 use Exception;
 

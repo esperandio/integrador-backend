@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\External\Controllers;
 
-use App\Presentation\Controllers\Ports\{ControllerTemplate, RequestInput, CreateResourceOperation};
+use App\Presentation\Ports\RequestInput;
+use App\Presentation\Controllers\Ports\{ControllerTemplate, CreateResourceOperation};
 use App\External\Controllers\Ports\HttpRequestOutput;
 
 class WebController

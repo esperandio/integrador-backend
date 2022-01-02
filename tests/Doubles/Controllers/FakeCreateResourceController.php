@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Test\Doubles\Controllers;
 
-use App\Presentation\Controllers\Ports\{CreateResourceOperation, ControllerTemplate, RequestInput, RequestOutput};
+use App\Presentation\Ports\{RequestInput, RequestOutput};
+use App\Presentation\Controllers\Ports\{CreateResourceOperation, ControllerTemplate};
 
 class FakeCreateResourceController extends ControllerTemplate implements CreateResourceOperation
 {

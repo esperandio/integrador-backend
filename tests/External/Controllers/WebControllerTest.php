@@ -14,7 +14,7 @@ use Test\Doubles\Controllers\{
     UnauthorizedExceptionController
 };
 use App\External\Controllers\WebController;
-use App\Presentation\Controllers\Ports\RequestInput;
+use App\Presentation\Ports\RequestInput;
 
 class WebControllerTest extends TestCase
 {

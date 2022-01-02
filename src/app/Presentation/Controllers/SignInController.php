@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Presentation\Controllers;
 
-use App\Presentation\Controllers\Ports\{ControllerTemplate, RequestInput, RequestOutput};
+use App\Presentation\Ports\{RequestInput, RequestOutput};
+use App\Presentation\Controllers\Ports\ControllerTemplate;
 use App\UseCases\Ports\{SignInUseCase};
 use App\UseCases\SignIn\Ports\AuthenticationParamsData;
 

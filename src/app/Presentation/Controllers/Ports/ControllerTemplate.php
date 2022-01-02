@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\Controllers\Ports;
 
+use App\Presentation\Ports\{RequestInput, RequestOutput};
 use App\Presentation\Controllers\Exceptions\MissingParamException;
 
 abstract class ControllerTemplate

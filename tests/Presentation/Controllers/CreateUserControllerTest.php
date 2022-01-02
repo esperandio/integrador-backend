@@ -7,7 +7,7 @@ namespace Test\Presentation\Controllers;
 use PHPUnit\Framework\TestCase;
 use Test\Doubles\UseCases\{FakeCreateUser, ExceptionCreateUser};
 use App\Presentation\Controllers\CreateUserController;
-use App\Presentation\Controllers\Ports\{RequestInput, RequestOutput};
+use App\Presentation\Ports\{RequestInput, RequestOutput};
 use App\Presentation\Controllers\Exceptions\MissingParamException;
 use Exception;
 

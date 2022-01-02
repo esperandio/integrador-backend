@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\External\Controllers\WebController;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use App\Presentation\Controllers\Ports\RequestInput;
+use App\Presentation\Ports\RequestInput;
 
 function slimRouterAdapter(WebController $controller): \Closure
 {
