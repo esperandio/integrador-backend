@@ -14,6 +14,15 @@ class FakeTokenManager implements TokenManager
         return $tokenData->id . 'SIGNED';
     }
 
+    public function decode(string $token): TokenData
+    {
+        if (!$this->verify($token)) {
+            throw new \Exception("Invalid token");
+        }
+
+        return new TokenData(id: (int) str_replace('SIGNED', '', $token));
+    }
+
     public function verify(string $token): bool
     {
         if (str_ends_with($token, 'SIGNED')) {

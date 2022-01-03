@@ -32,6 +32,13 @@ class JwtTokenManager implements TokenManager
         return JWT::encode($payload, $this->secret, 'HS256');
     }
 
+    public function decode(string $token): TokenData
+    {
+        $payload = (array) JWT::decode($token, new Key($this->secret, 'HS256'));
+
+        return new TokenData(id: $payload['id']);
+    }
+
     public function verify(string $token): bool
     {
         try {
