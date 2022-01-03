@@ -7,5 +7,8 @@ use App\Presentation\Controllers\CreateGroupController;
 
 function makeCreateGroupController(): WebController
 {
-    return new WebController(new CreateGroupController(makeCreateGroupUseCase()));
+    return new WebController(
+        new CreateGroupController(makeCreateGroupUseCase()),
+        makeAuthenticationMiddleware()
+    );
 }
