@@ -7,5 +7,8 @@ use App\Presentation\Controllers\CreateUserController;
 
 function makeCreateUserController(): WebController
 {
-    return new WebController(new CreateUserController(makeCreateUserUseCase()));
+    return new WebController(
+        new CreateUserController(makeCreateUserUseCase()),
+        makeAuthenticationMiddleware()
+    );
 }

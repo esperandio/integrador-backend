@@ -15,8 +15,21 @@ function slimRouterAdapter(WebController $controller): \Closure
          */
         $body = (array) json_decode($request->getBody()->getContents());
 
+        $headers = $request->getHeaders();
+
+        array_walk(
+            $headers,
+            function (&$value) {
+                $value = (string) $value[0];
+            }
+        );
+
+        /**
+         * @var array<string, int|string> $headers
+         */
+
         $httpResponse = $controller->handle(new RequestInput(
-            body: $body
+            body: array_merge($body, $headers)
         ));
 
         $response->getBody()->write($httpResponse->body);

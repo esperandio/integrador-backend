@@ -6,6 +6,7 @@ namespace App\External\Controllers;
 
 use App\Presentation\Ports\RequestInput;
 use App\Presentation\Controllers\Ports\{ControllerTemplate, CreateResourceOperation};
+use App\Presentation\Middleware\Ports\Middleware;
 use App\External\Controllers\Ports\HttpRequestOutput;
 
 class WebController
@@ -13,13 +14,18 @@ class WebController
     use HttpHelper;
 
     public function __construct(
-        private ControllerTemplate $controllerTemplate
+        private ControllerTemplate $controllerTemplate,
+        private ?Middleware $middleware = null
     ) {
     }
 
     public function handle(RequestInput $requestInput): HttpRequestOutput
     {
         try {
+            if (!empty($this->middleware)) {
+                $this->middleware->handle($requestInput);
+            }
+
             $requestOutput = $this->controllerTemplate->handle($requestInput);
 
             $body = json_encode($requestOutput->body);
