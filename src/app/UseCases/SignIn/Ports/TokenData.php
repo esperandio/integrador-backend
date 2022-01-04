@@ -7,7 +7,7 @@ namespace App\UseCases\SignIn\Ports;
 class TokenData
 {
     public function __construct(
-        public int $id = 0
+        public int $userId = 0
     ) {
     }
 }

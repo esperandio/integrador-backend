@@ -31,7 +31,7 @@ class DefaultCase implements SignInUseCase
             throw new WrongPasswordException();
         }
 
-        $accessToken = $this->tokenManager->sign(new TokenData(id: $userData->id));
+        $accessToken = $this->tokenManager->sign(new TokenData(userId: $userData->id));
 
         return new AuthenticationResultData(
             accessToken: $accessToken

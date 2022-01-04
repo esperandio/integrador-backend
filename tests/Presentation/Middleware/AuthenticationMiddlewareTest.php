@@ -18,7 +18,7 @@ class AuthenticationMiddlewareTest extends TestCase
         $requestOutput = $authenticationMiddleware->handle($this->getDefaultRequestInput());
 
         $this->assertInstanceOf(RequestOutput::class, $requestOutput);
-        $this->assertEquals(1, $requestOutput->body['id']);
+        $this->assertEquals(1, $requestOutput->body['userId']);
     }
 
     public function testThrowsExceptionWhenUseCaseFails(): void

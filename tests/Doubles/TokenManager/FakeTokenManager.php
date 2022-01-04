@@ -11,7 +11,7 @@ class FakeTokenManager implements TokenManager
 {
     public function sign(TokenData $tokenData, ?DateTimeImmutable $expirationDate = null): string
     {
-        return $tokenData->id . 'SIGNED';
+        return $tokenData->userId . 'SIGNED';
     }
 
     public function decode(string $token): TokenData
@@ -20,7 +20,7 @@ class FakeTokenManager implements TokenManager
             throw new \Exception("Invalid token");
         }
 
-        return new TokenData(id: (int) str_replace('SIGNED', '', $token));
+        return new TokenData(userId: (int) str_replace('SIGNED', '', $token));
     }
 
     public function verify(string $token): bool

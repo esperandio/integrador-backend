@@ -11,7 +11,7 @@ use Test\Doubles\TokenManager\FakeTokenManager;
 use Test\Builders\UserDataBuilder;
 use App\UseCases\SignIn\DefaultCase as SignIn;
 use App\UseCases\Ports\{UserRepository};
-use App\UseCases\SignIn\Ports\{AuthenticationParamsData, TokenData};
+use App\UseCases\SignIn\Ports\{AuthenticationParamsData};
 use App\UseCases\SignIn\Exceptions\{UserNotFoundException, WrongPasswordException};
 
 class DefaultCaseTest extends TestCase

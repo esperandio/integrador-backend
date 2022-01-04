@@ -36,7 +36,7 @@ class JwtTokenManager implements TokenManager
     {
         $payload = (array) JWT::decode($token, new Key($this->secret, 'HS256'));
 
-        return new TokenData(id: $payload['id']);
+        return new TokenData(userId: $payload['userId']);
     }
 
     public function verify(string $token): bool
