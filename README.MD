@@ -1,0 +1,1 @@
+[![PHP Composer](https://github.com/esperandio/integrador-backend/actions/workflows/php.yml/badge.svg)](https://github.com/esperandio/integrador-backend/actions/workflows/php.yml)
