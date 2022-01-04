@@ -16,23 +16,13 @@ abstract class Role
         'createUser' => self::DEFAULT_PERMISSION_VALUE
     ];
 
-    private function getPermissionValueByKey(string $key): bool
+    public function getPermissionValueByKey(string $key): bool
     {
         if (!array_key_exists($key, $this->permissions)) {
             return false;
         }
 
         return $this->permissions[$key];
-    }
-
-    public function canCreateGroup(): bool
-    {
-        return $this->getPermissionValueByKey('createGroup');
-    }
-
-    public function canCreateUser(): bool
-    {
-        return $this->getPermissionValueByKey('createUser');
     }
 
     abstract public function getValue(): string;

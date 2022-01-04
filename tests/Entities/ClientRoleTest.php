@@ -16,11 +16,11 @@ final class ClientRoleTest extends TestCase
 
     public function testCannotCreateGroup(): void
     {
-        $this->assertEquals(false, (new ClientRole())->canCreateGroup());
+        $this->assertEquals(false, (new ClientRole())->getPermissionValueByKey('createGroup'));
     }
 
     public function testCannotCreateUser(): void
     {
-        $this->assertEquals(false, (new ClientRole())->canCreateUser());
+        $this->assertEquals(false, (new ClientRole())->getPermissionValueByKey('createUser'));
     }
 }

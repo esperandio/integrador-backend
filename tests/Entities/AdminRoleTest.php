@@ -16,11 +16,11 @@ final class AdminRoleTest extends TestCase
 
     public function testCanCreateGroup(): void
     {
-        $this->assertEquals(true, (new AdminRole())->canCreateGroup());
+        $this->assertEquals(true, (new AdminRole())->getPermissionValueByKey('createGroup'));
     }
 
     public function testCanCreateUser(): void
     {
-        $this->assertEquals(true, (new AdminRole())->canCreateUser());
+        $this->assertEquals(true, (new AdminRole())->getPermissionValueByKey('createUser'));
     }
 }

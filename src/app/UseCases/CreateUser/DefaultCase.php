@@ -64,7 +64,7 @@ class DefaultCase implements CreateUserUseCase
 
         $ownerRole = RoleFactory::create($ownerGroupData->roleKey);
 
-        if (!$ownerRole->canCreateUser()) {
+        if (!$ownerRole->getPermissionValueByKey('createUser')) {
             return true;
         }
 

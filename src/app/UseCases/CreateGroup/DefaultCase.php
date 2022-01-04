@@ -64,7 +64,7 @@ class DefaultCase implements CreateGroupUseCase
 
         $ownerRole = RoleFactory::create($ownerGroupData->roleKey);
 
-        if (!$ownerRole->canCreateGroup()) {
+        if (!$ownerRole->getPermissionValueByKey('createGroup')) {
             return true;
         }
 

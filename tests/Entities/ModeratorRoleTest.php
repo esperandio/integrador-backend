@@ -16,11 +16,11 @@ final class ModeratorRoleTest extends TestCase
 
     public function testCanCreateGroup(): void
     {
-        $this->assertEquals(true, (new ModeratorRole())->canCreateGroup());
+        $this->assertEquals(true, (new ModeratorRole())->getPermissionValueByKey('createGroup'));
     }
 
     public function testCanCreateUser(): void
     {
-        $this->assertEquals(true, (new ModeratorRole())->canCreateUser());
+        $this->assertEquals(true, (new ModeratorRole())->getPermissionValueByKey('createUser'));
     }
 }
