@@ -19,10 +19,7 @@ class AuthenticationMiddleware implements Middleware
     public function handle(RequestInput $requestInput): RequestOutput
     {
         try {
-            $token = isset($requestInput->body['authorization'])
-                ? (string) $requestInput->body['authorization']
-                : '';
-
+            $token = $requestInput->getString('authorization');
             $token = str_replace('Bearer ', '', $token);
 
             $tokenData = $this->tokenManager->decode($token);

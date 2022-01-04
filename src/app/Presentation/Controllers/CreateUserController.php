@@ -19,14 +19,12 @@ class CreateUserController extends ControllerTemplate implements CreateResourceO
 
     protected function performSpecificOperation(RequestInput $requestInput): RequestOutput
     {
-        $requestParams = $requestInput->body;
-
         $userData = $this->createUser->perform(
-            createdByUserId: (int) $requestParams['userId'],
+            createdByUserId: $requestInput->getInt('userId'),
             userData: new UserData(
-                email: (string) $requestParams['email'],
-                password: (string) $requestParams['password'],
-                groupId: (int) $requestParams['groupId']
+                email: $requestInput->getString('email'),
+                password: $requestInput->getString('password'),
+                groupId: $requestInput->getInt('groupId')
             )
         );
 

@@ -20,11 +20,9 @@ class SignInController extends ControllerTemplate
 
     protected function performSpecificOperation(RequestInput $requestInput): RequestOutput
     {
-        $requestParams = $requestInput->body;
-
         $authenticationResultData = $this->signIn->perform(new AuthenticationParamsData(
-            email: (string) $requestParams['email'],
-            password: (string) $requestParams['password']
+            email: $requestInput->getString('email'),
+            password: $requestInput->getString('password')
         ));
 
         return new RequestOutput(body: (array) $authenticationResultData);

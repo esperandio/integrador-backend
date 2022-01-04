@@ -19,14 +19,12 @@ class CreateGroupController extends ControllerTemplate implements CreateResource
 
     protected function performSpecificOperation(RequestInput $requestInput): RequestOutput
     {
-        $requestParams = $requestInput->body;
-
         $groupData =  $this->createGroup->perform(
-            createdByUserId: (int) $requestParams['userId'],
+            createdByUserId: $requestInput->getInt('userId'),
             groupData: new GroupData(
-                name: (string) $requestParams['name'],
-                minimumMillisecondsIdleTimeAllowed: (int) $requestParams['minimumMillisecondsIdleTimeAllowed'],
-                roleKey: (string) $requestParams['roleKey']
+                name: $requestInput->getString('name'),
+                minimumMillisecondsIdleTimeAllowed: $requestInput->getInt('minimumMillisecondsIdleTimeAllowed'),
+                roleKey: $requestInput->getString('roleKey')
             )
         );
 
