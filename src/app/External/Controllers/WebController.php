@@ -23,7 +23,9 @@ class WebController
     {
         try {
             if (!empty($this->middleware)) {
-                $this->middleware->handle($requestInput);
+                $middlewareOutput = $this->middleware->handle($requestInput)->body;
+
+                $requestInput->body = array_merge($requestInput->body, $middlewareOutput);
             }
 
             $requestOutput = $this->controllerTemplate->handle($requestInput);
