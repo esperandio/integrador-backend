@@ -6,5 +6,8 @@ use App\UseCases\CreateGroup\DefaultCase as CreateGroup;
 
 function makeCreateGroupUseCase(): CreateGroup
 {
-    return new CreateGroup(makeUserRepository(), makeGroupRepository());
+    return new CreateGroup(
+        makeAuthorizationService(),
+        makeGroupRepository()
+    );
 }
