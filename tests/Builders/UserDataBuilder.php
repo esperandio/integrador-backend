@@ -32,6 +32,12 @@ class UserDataBuilder
         return $this;
     }
 
+    public function withDifferentGroupId(int $groupId): UserDataBuilder
+    {
+        $this->userData->groupId = $groupId;
+        return $this;
+    }
+
     public function build(): UserData
     {
         return $this->userData;
