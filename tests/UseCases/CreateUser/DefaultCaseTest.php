@@ -7,6 +7,7 @@ namespace Test\UseCases\CreateUser;
 use PHPUnit\Framework\TestCase;
 use Test\Doubles\Repositories\{InMemoryGroupRepository, InMemoryUserRepository};
 use Test\Doubles\Encoder\FakeEncoder;
+use Test\Doubles\UseCases\FakeAuthorization;
 use Test\Builders\{UserDataBuilder, GroupDataBuilder};
 use App\UseCases\CreateUser\DefaultCase as CreateUser;
 use App\UseCases\Ports\{UserRepository, GroupRepository, UserData};
@@ -25,7 +26,7 @@ class DefaultCaseTest extends TestCase
         $groupRepository = $this->getGroupRepositoryWithDefaultGroup();
         $encoder = new FakeEncoder();
 
-        $createUser = new CreateUser($userRepository, $groupRepository, $encoder);
+        $createUser = new CreateUser(new FakeAuthorization(), $userRepository, $groupRepository, $encoder);
         $userData = $createUser->perform(
             createdByUserId: 1,
             userData: new UserData(
@@ -39,42 +40,6 @@ class DefaultCaseTest extends TestCase
         $this->assertEquals(true, $encoder->verify('abcABC123', $userData->password));
     }
 
-    public function testThrowsExceptionWhenOwnerIdNotFound(): void
-    {
-        $this->expectException(UserNotFoundException::class);
-
-        $emptyUserRepository = new InMemoryUserRepository();
-        $emptyGroupRepository = new InMemoryGroupRepository();
-
-        $createUser = new CreateUser($emptyUserRepository, $emptyGroupRepository, new FakeEncoder());
-        $createUser->perform(
-            createdByUserId: 1,
-            userData: new UserData(
-                email: 'user@example.com',
-                password: 'abcABC123',
-                groupId: 1
-            )
-        );
-    }
-
-    public function testThrowsExceptionWhenOwnerGroupNotFound(): void
-    {
-        $this->expectException(GroupNotFoundException::class);
-
-        $userRepository = $this->getUserRepositoryWithDefaultUser();
-        $emptyGroupRepository = new InMemoryGroupRepository();
-
-        $createUser = new CreateUser($userRepository, $emptyGroupRepository, new FakeEncoder());
-        $createUser->perform(
-            createdByUserId: 1,
-            userData: new UserData(
-                email: 'user@example.com',
-                password: 'abcABC123',
-                groupId: 1
-            )
-        );
-    }
-
     public function testThrowsExceptionWhenOwnerRoleCannotCreateUser(): void
     {
         $this->expectException(NotAllowedToCreateUserException::class);
@@ -84,7 +49,13 @@ class DefaultCaseTest extends TestCase
         $userRepository = $this->getUserRepositoryWithDefaultUser();
         $groupRepository = new InMemoryGroupRepository([$groupData]);
 
-        $createUser = new CreateUser($userRepository, $groupRepository, new FakeEncoder());
+        $createUser = new CreateUser(
+            new FakeAuthorization(false),
+            $userRepository,
+            $groupRepository,
+            new FakeEncoder()
+        );
+
         $createUser->perform(
             createdByUserId: 1,
             userData: new UserData(
@@ -102,7 +73,7 @@ class DefaultCaseTest extends TestCase
         $userRepository = $this->getUserRepositoryWithDefaultUser();
         $groupRepository = $this->getGroupRepositoryWithDefaultGroup();
 
-        $createUser = new CreateUser($userRepository, $groupRepository, new FakeEncoder());
+        $createUser = new CreateUser(new FakeAuthorization(), $userRepository, $groupRepository, new FakeEncoder());
         $createUser->perform(
             createdByUserId: 1,
             userData: new UserData(
@@ -120,7 +91,7 @@ class DefaultCaseTest extends TestCase
         $userRepository = $this->getUserRepositoryWithDefaultUser();
         $groupRepository = $this->getGroupRepositoryWithDefaultGroup();
 
-        $createUser = new CreateUser($userRepository, $groupRepository, new FakeEncoder());
+        $createUser = new CreateUser(new FakeAuthorization(), $userRepository, $groupRepository, new FakeEncoder());
         $createUser->perform(
             createdByUserId: 1,
             userData: new UserData(
