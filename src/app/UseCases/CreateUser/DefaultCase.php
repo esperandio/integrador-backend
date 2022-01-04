@@ -4,19 +4,26 @@ declare(strict_types=1);
 
 namespace App\UseCases\CreateUser;
 
-use App\UseCases\Ports\{CreateUserUseCase, UserRepository, GroupRepository, Encoder, UserData};
+use App\UseCases\Ports\{
+    CreateUserUseCase,
+    AuthorizationService,
+    UserRepository,
+    GroupRepository,
+    Encoder,
+    UserData
+};
 use App\Entities\{Group, User};
 use App\Entities\Factories\Role as RoleFactory;
 use App\UseCases\CreateUser\Exceptions\{
     ExistingUserException,
     NotAllowedToCreateUserException,
-    UserNotFoundException,
     GroupNotFoundException
 };
 
 class DefaultCase implements CreateUserUseCase
 {
     public function __construct(
+        private AuthorizationService $authorizationService,
         private UserRepository $userRepository,
         private GroupRepository $groupRepository,
         private Encoder $encoder
@@ -25,7 +32,7 @@ class DefaultCase implements CreateUserUseCase
 
     public function perform(int $createdByUserId, UserData $userData): UserData
     {
-        if ($this->userIsNotAllowedToCreateUser($createdByUserId)) {
+        if (!$this->authorizationService->checkIfUserIsAllowedToPerformOperation($createdByUserId, 'createUser')) {
             throw new NotAllowedToCreateUserException();
         }
 
@@ -46,29 +53,6 @@ class DefaultCase implements CreateUserUseCase
                 groupId: $userData->groupId
             )
         );
-    }
-
-    private function userIsNotAllowedToCreateUser(int $createdByUserId): bool
-    {
-        $ownerData = $this->userRepository->findUserById($createdByUserId);
-
-        if (empty($ownerData)) {
-            throw new UserNotFoundException();
-        }
-
-        $ownerGroupData = $this->groupRepository->findGroupById($ownerData->groupId);
-
-        if (empty($ownerGroupData)) {
-            throw new GroupNotFoundException();
-        }
-
-        $ownerRole = RoleFactory::create($ownerGroupData->roleKey);
-
-        if (!$ownerRole->getPermissionValueByKey('createUser')) {
-            return true;
-        }
-
-        return false;
     }
 
     private function userAlreadyExists(string $email): bool

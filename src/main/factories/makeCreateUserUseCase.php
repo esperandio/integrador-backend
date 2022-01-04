@@ -6,5 +6,10 @@ use App\UseCases\CreateUser\DefaultCase as CreateUser;
 
 function makeCreateUserUseCase(): CreateUser
 {
-    return new CreateUser(makeUserRepository(), makeGroupRepository(), makeEncoder());
+    return new CreateUser(
+        makeAuthorizationService(),
+        makeUserRepository(),
+        makeGroupRepository(),
+        makeEncoder()
+    );
 }
