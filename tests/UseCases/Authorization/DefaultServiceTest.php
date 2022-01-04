@@ -18,7 +18,7 @@ final class DefaultServiceTest extends TestCase
     public function testReturnTrueWhenGroupRoleIsAllowedToPerformOperation(): void
     {
         $authorizationService = new AuthorizationService(
-            $this->getUserRepositoryWithDefaultUser(), 
+            $this->getUserRepositoryWithDefaultUser(),
             $this->getGroupRepositoryWithDefaultGroup()
         );
 
@@ -30,7 +30,7 @@ final class DefaultServiceTest extends TestCase
         $groupData = GroupDataBuilder::aGroup()->withClientRole()->build();
 
         $authorizationService = new AuthorizationService(
-            $this->getUserRepositoryWithDefaultUser(), 
+            $this->getUserRepositoryWithDefaultUser(),
             new InMemoryGroupRepository([$groupData])
         );
 
@@ -42,7 +42,7 @@ final class DefaultServiceTest extends TestCase
         $this->expectException(UserNotFoundException::class);
 
         $authorizationService = new AuthorizationService(
-            $this->getUserRepositoryWithDefaultUser(), 
+            $this->getUserRepositoryWithDefaultUser(),
             $this->getGroupRepositoryWithDefaultGroup()
         );
 
@@ -56,7 +56,7 @@ final class DefaultServiceTest extends TestCase
         $userData = UserDataBuilder::aUser()->withDifferentGroupId(100)->build();
 
         $authorizationService = new AuthorizationService(
-            new InMemoryUserRepository([$userData]), 
+            new InMemoryUserRepository([$userData]),
             $this->getGroupRepositoryWithDefaultGroup()
         );
 
