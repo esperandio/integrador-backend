@@ -21,7 +21,7 @@ class ClientApplicationEventTest extends TestCase
     public function testReturnExitApplicationEventInstance(): void
     {
         $this->assertInstanceOf(
-            ExitApplicationEvent::class, 
+            ExitApplicationEvent::class,
             ClientApplicationEvent::create(new EventData(
                 key: 'ExitApplicationEvent'
             ))
@@ -31,7 +31,7 @@ class ClientApplicationEventTest extends TestCase
     public function testReturnIdleTimeEventInstance(): void
     {
         $this->assertInstanceOf(
-            IdleTimeEvent::class, 
+            IdleTimeEvent::class,
             ClientApplicationEvent::create(new EventData(
                 key: 'IdleTimeEvent'
             ))
@@ -41,7 +41,7 @@ class ClientApplicationEventTest extends TestCase
     public function testReturnStartApplicationEventInstance(): void
     {
         $this->assertInstanceOf(
-            StartApplicationEvent::class, 
+            StartApplicationEvent::class,
             ClientApplicationEvent::create(new EventData(
                 key: 'StartApplicationEvent'
             ))
@@ -51,7 +51,7 @@ class ClientApplicationEventTest extends TestCase
     public function testReturnStartWatcherEventInstance(): void
     {
         $this->assertInstanceOf(
-            StartWatcherEvent::class, 
+            StartWatcherEvent::class,
             ClientApplicationEvent::create(new EventData(
                 key: 'StartWatcherEvent'
             ))
@@ -61,7 +61,7 @@ class ClientApplicationEventTest extends TestCase
     public function testReturnStopWatcherEventInstance(): void
     {
         $this->assertInstanceOf(
-            StopWatcherEvent::class, 
+            StopWatcherEvent::class,
             ClientApplicationEvent::create(new EventData(
                 key: 'StopWatcherEvent'
             ))
