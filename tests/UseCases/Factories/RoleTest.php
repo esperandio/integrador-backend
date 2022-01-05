@@ -7,7 +7,7 @@ namespace Test\UseCases\Factories;
 use PHPUnit\Framework\TestCase;
 use App\UseCases\Factories\Role;
 use App\Entities\{AdminRole, ModeratorRole, ClientRole};
-use App\Entities\Exceptions\RoleKeyNotFoundException;
+use App\UseCases\Factories\Exceptions\RoleKeyNotFoundException;
 
 final class RoleTest extends TestCase
 {

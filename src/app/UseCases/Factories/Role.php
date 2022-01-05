@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\UseCases\Factories;
 
 use App\Entities\{Role as RoleInterface, AdminRole, ModeratorRole, ClientRole};
-use App\Entities\Exceptions\RoleKeyNotFoundException;
+use App\UseCases\Factories\Exceptions\RoleKeyNotFoundException;
 
 class Role
 {
