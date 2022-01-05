@@ -5,24 +5,6 @@
 - Sign in - OK;
 - Import client events;
 
-## To check
-
-- Repositories Exceptions
- - NotAllowed
- - Existing
- - NotFound
-
-## Roadmap
-
-- Entities (including PHPUnit)
-- Use cases (including PHPUnit with Doubles)
-- External
- - Encoder (PHP native password hash)
- - Repositories (PDO)
- - Token manager (JWT)
-- Presenter
- - Controllers
-
 ## Run Composer
 
 ```
