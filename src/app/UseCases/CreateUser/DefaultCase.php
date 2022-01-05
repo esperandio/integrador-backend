@@ -13,7 +13,7 @@ use App\UseCases\Ports\{
     UserData
 };
 use App\Entities\{Group, User};
-use App\Entities\Factories\Role as RoleFactory;
+use App\UseCases\Factories\Role as RoleFactory;
 use App\UseCases\CreateUser\Exceptions\{
     ExistingUserException,
     NotAllowedToCreateUserException,

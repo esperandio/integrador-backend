@@ -10,7 +10,7 @@ use App\UseCases\Ports\{
     GroupRepository,
     GroupData
 };
-use App\Entities\Factories\Role as RoleFactory;
+use App\UseCases\Factories\Role as RoleFactory;
 use App\Entities\Group;
 use App\UseCases\CreateGroup\Exceptions\
 {

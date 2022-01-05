@@ -6,7 +6,7 @@ namespace App\UseCases\Authorization;
 
 use App\UseCases\Ports\AuthorizationService;
 use App\UseCases\Ports\{UserRepository, GroupRepository};
-use App\Entities\Factories\Role as RoleFactory;
+use App\UseCases\Factories\Role as RoleFactory;
 use App\UseCases\Authorization\Exceptions\{UserNotFoundException, GroupNotFoundException};
 
 class DefaultService implements AuthorizationService

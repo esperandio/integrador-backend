@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Test\Entities\Factories;
+namespace Test\UseCases\Factories;
 
 use PHPUnit\Framework\TestCase;
-use App\Entities\Factories\Role;
+use App\UseCases\Factories\Role;
 use App\Entities\{AdminRole, ModeratorRole, ClientRole};
 use App\Entities\Exceptions\RoleKeyNotFoundException;
 
