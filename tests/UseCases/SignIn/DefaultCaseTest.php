@@ -44,7 +44,6 @@ class DefaultCaseTest extends TestCase
         ));
     }
 
-
     public function testThrowsExceptionWhenPasswordIsWrong(): void
     {
         $this->expectException(WrongPasswordException::class);
